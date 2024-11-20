@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h2>Task List</h2>
+    <a href="{% url 'add_task' %}">Add New Task</a>
+    <ul>
+        {% if tasks %}
+            {% for task in tasks %}
+                <li>
+                    {{ task.title }} - <a href="{% url 'edit_task' task.pk %}">Edit</a>
+                    - <a href="{% url 'delete_task' task.pk %}">Delete</a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No tasks available</li>
+        {% endif %}
+    </ul>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
